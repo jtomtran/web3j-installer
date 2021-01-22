@@ -1,5 +1,5 @@
 #!/bin/sh
-web3j_version=3.3.1
+web3j_version=4.5.16
 installed_flag=0
 installed_version=""
 
@@ -32,15 +32,15 @@ setup_color() {
 install_web3j() {
   echo "Downloading Web3j ..."
   mkdir -p "$HOME/.web3j"
-  if [ "$(curl --write-out "%{http_code}" --silent --output /dev/null "https://github.com/web3j/web3j-cli/releases/download/v${web3j_version}/web3j-cli-shadow-${web3j_version}.tar")" -eq 302 ]; then
-    curl -# -L -o "$HOME/.web3j/web3j-cli-shadow-${web3j_version}.tar" "https://github.com/web3j/web3j-cli/releases/download/v${web3j_version}/web3j-cli-shadow-${web3j_version}.tar"
+  if [ "$(curl --write-out "%{http_code}" --silent --output /dev/null "https://github.com/web3j/web3j-cli/releases/download/v4.5.16/web3j-4.5.16.tar" -eq 302 ]; then
+    curl -# -L -o "$HOME/.web3j/web3j-cli-shadow-${web3j_version}.tar" "https://github.com/web3j/web3j-cli/releases/download/v4.5.16/web3j-4.5.16.tar"
     echo "Installing Web3j..."
-    echo "https://github.com/web3j/web3j-cli/releases/download/v${web3j_version}/web3j-cli-shadow-${web3j_version}.tar"
+    echo "https://github.com/web3j/web3j-cli/releases/download/v4.5.16/web3j-4.5.16.tar"
     tar -xf "$HOME/.web3j/web3j-cli-shadow-${web3j_version}.tar" -C "$HOME/.web3j"
     echo "export PATH=\$PATH:$HOME/.web3j" >"$HOME/.web3j/source.sh"
     chmod +x "$HOME/.web3j/source.sh"
     echo "Removing downloaded archive..."
-    rm "$HOME/.web3j/web3j-cli-shadow-${web3j_version}.tar"
+    rm "$HOME/.web3j/v4.5.16/web3j-4.5.16.tar"
   else
     echo "Looks like there was an error while trying to download web3j"
     exit 0
